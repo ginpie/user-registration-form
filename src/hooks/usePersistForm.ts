@@ -10,6 +10,7 @@ export default function usePersistForm({
   localStorageKey,
 }: UsePersistFormProps) {
   useEffect(() => {
+    if (!value) return;
     localStorage.setItem(localStorageKey, JSON.stringify(value));
   }, [value, localStorageKey]);
 

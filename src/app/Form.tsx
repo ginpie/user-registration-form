@@ -13,7 +13,7 @@ type FormInputs = {
 };
 
 type FormProps = {
-  onSuccess: () => void;
+  onSuccess?: () => void;
 };
 
 export default function Form({ onSuccess }: FormProps) {
@@ -22,17 +22,22 @@ export default function Form({ onSuccess }: FormProps) {
     handleSubmit,
     formState: { isValid, errors },
     getValues,
+    watch,
   } = useForm<FormInputs>({
     mode: 'all',
     defaultValues: {
-      ...JSON.parse(localStorage.getItem(FORM_DATA_KEY) as string),
-    }
+      ...JSON.parse(localStorage.getItem(FORM_DATA_KEY) || '{}'),
+    },
   });
 
-  usePersistForm({ value: getValues(), localStorageKey: FORM_DATA_KEY });
+  const formValues = watch();
+
+  usePersistForm({ value: formValues, localStorageKey: FORM_DATA_KEY });
 
   const onSubmit: SubmitHandler<FormInputs> = () => {
-    onSuccess();
+    if (onSuccess) {
+      onSuccess();
+    }
   };
 
   return (
