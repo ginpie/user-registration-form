@@ -92,7 +92,7 @@ export default function Form({ onSuccess }: FormProps) {
       />
 
       <div className="mt-10">
-        <Button type="submit" disabled={!isValid}>
+        <Button type="submit" disabled={!isValid} data-testid="register-button">
           Register
         </Button>
       </div>
