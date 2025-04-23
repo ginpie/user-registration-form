@@ -2,6 +2,11 @@
 
 This Vite-based project is designed to provide a simple and fast implementation of a new user registration form using React. The project also includes a robust testing setup using Jest and React Testing Library to ensure the form works as expected.
 
+## Assumptions
+
+- The form data persists in the localstorage, and is updated on input
+- The saved data won't be used to fill the form on page reload, to keep a smooth user experience
+
 ## Getting Started
 
 ### Prerequisites
@@ -48,8 +53,7 @@ To preview the production build locally:
 npm run preview
 ```
 
-
-### Testing
+## Testing
 
 The project uses Jest and React Testing Library for testing.
 
@@ -84,10 +88,3 @@ Tests are located in the `src/tests/` directory. Each component typically has a 
 ├── README.md             # Project documentation
 └── vite.config.js        # Vite configuration
 ```
-
-## Scripts
-
-- `npm run dev`: Start the development server
-- `npm run test`: Run all tests
-- `npm run build`: Build for production
-- `npm run preview`: Preview the production build
