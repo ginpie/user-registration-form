@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Button, TextField } from '../components';
+import { Button, Checkbox, TextField } from '../components';
 import { usePersistForm } from '../hooks';
 
 const FORM_DATA_KEY = 'registration_form_local_data';
@@ -25,9 +25,6 @@ export default function Form({ onSuccess }: FormProps) {
     watch,
   } = useForm<FormInputs>({
     mode: 'all',
-    defaultValues: {
-      ...JSON.parse(localStorage.getItem(FORM_DATA_KEY) || '{}'),
-    },
   });
 
   const formValues = watch();
@@ -41,7 +38,11 @@ export default function Form({ onSuccess }: FormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-1">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-full space-y-1"
+      data-testid="form"
+    >
       <TextField
         label="Full Name"
         placeholder="Enter your full name"
@@ -89,6 +90,13 @@ export default function Form({ onSuccess }: FormProps) {
           },
         })}
         error={errors.confirmPassword?.message}
+      />
+
+      <Checkbox
+        label="I accept the terms and conditions"
+        error={errors.acceptTerms?.message}
+        {...register('acceptTerms', { required: 'You must accept the terms' })}
+        checked={formValues.acceptTerms}
       />
 
       <div className="mt-10">
