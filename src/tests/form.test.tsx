@@ -60,11 +60,13 @@ describe('2. form validation', () => {
     render(<App />);
 
     const fullNameInput = screen.getByLabelText(/full name/i);
+    const emailInput = screen.getByLabelText(/email/i);
 
     expect(fullNameInput).toBeInTheDocument();
     expect(screen.queryByText(/full name is required/i)).toBeNull();
     await userEvent.click(fullNameInput);
     await userEvent.clear(fullNameInput);
+    await userEvent.click(emailInput); // blur the input to trigger validation
     expect(screen.getByText(/full name is required/i)).toBeInTheDocument();
   });
 
@@ -78,6 +80,7 @@ describe('2. form validation', () => {
     expect(screen.queryByText(/email is required/i)).toBeNull();
     await userEvent.click(emailInput);
     await userEvent.clear(emailInput);
+    await userEvent.click(passwordInput); // blur the input to trigger validation
     expect(screen.getByText(/email is required/i)).toBeInTheDocument();
 
     expect(screen.queryByText(/invalid email address/i)).toBeNull();
@@ -97,6 +100,7 @@ describe('2. form validation', () => {
     expect(screen.queryByText(/password is required/i)).toBeNull();
     await userEvent.click(passwordInput);
     await userEvent.clear(passwordInput);
+    await userEvent.click(emailInput); // blur the input to trigger validation
     expect(screen.getByText(/password is required/i)).toBeInTheDocument();
 
     expect(
@@ -135,6 +139,9 @@ describe('2. form validation', () => {
 
     expect(acceptTermsCheckbox).toBeInTheDocument();
     expect(screen.queryByText(/you must accept the terms/i)).toBeNull();
+    expect(acceptTermsCheckbox).not.toBeChecked();
+    await userEvent.click(acceptTermsCheckbox);
+    expect(acceptTermsCheckbox).toBeChecked();
     await userEvent.click(acceptTermsCheckbox);
     expect(acceptTermsCheckbox).not.toBeChecked();
     expect(screen.getByText(/you must accept the terms/i)).toBeInTheDocument();
