@@ -1,54 +1,93 @@
-# React + TypeScript + Vite
+# New User Registration Form
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This Vite-based project is designed to provide a simple and fast implementation of a new user registration form using React. The project also includes a robust testing setup using Jest and React Testing Library to ensure the form works as expected.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
 
-## Expanding the ESLint configuration
+Ensure you have the following installed on your machine:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [Node.js](https://nodejs.org/) (v22 LTS)
+- [npm](https://www.npmjs.com/) package manager
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/ginpie/form-registration.git
+   cd new-user-registration-form
+   ```
+
+2. **Install dependencies**:
+   Using npm:
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**:
+   Using npm:
+   ```bash
+   npm run dev
+   ```
+
+   The development server will start, and you can access the app at `http://localhost:5173`.
+
+### Build for Production
+
+To create a production build:
+```bash
+npm run build
+```
+The build will be available in the `dist` folder.
+
+### Run the Production Build Locally
+
+To preview the production build locally:
+```bash
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Testing
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+The project uses Jest and React Testing Library for testing.
+
+### Run Tests
+
+To execute all test cases:
+```bash
+npm run test
 ```
+
+### Testing Setup
+
+- **Jest**: Used as the test runner and assertion library.
+- **React Testing Library**: Used for testing React components and simulating user interactions.
+
+Tests are located in the `src/tests/` directory. Each component typically has a corresponding test file.
+
+## Project Structure
+
+```
+├── public/               # Static assets
+├── src/
+│   ├── app/              # Page
+│   ├── components/       # React components
+│   ├── tests/            # Test files
+│   ├── App.jsx           # Main app component
+│   ├── main.jsx          # Entry point
+│   └── index.css         # Global styles
+├── .gitignore            # Git ignore file
+├── jest.config.js        # Jest configuration
+├── package.json          # Project dependencies and scripts
+├── README.md             # Project documentation
+└── vite.config.js        # Vite configuration
+```
+
+## Scripts
+
+- `npm run dev`: Start the development server
+- `npm run test`: Run all tests
+- `npm run build`: Build for production
+- `npm run preview`: Preview the production build
