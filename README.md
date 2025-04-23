@@ -15,8 +15,8 @@ Ensure you have the following installed on your machine:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/ginpie/form-registration.git
-   cd new-user-registration-form
+   git clone https://github.com/ginpie/user-registration-form.git
+   cd user-registration-form
    ```
 
 2. **Install dependencies**:
